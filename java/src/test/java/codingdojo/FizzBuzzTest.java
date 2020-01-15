@@ -51,4 +51,10 @@ public class FizzBuzzTest {
         List<String> actual = Fizzbuzz5.calculateFizzbuzz().collect(Collectors.toList());
         assertEquals(FIZZBUZZES_1_TO_100, actual);
     }
+
+    @Test
+    void fizzbuzz6(){
+        List<String> actual = new Fizzbuzz6().calculateFizzbuzz().map(Object::toString).collect(Collectors.toList());
+        assertEquals(FIZZBUZZES_1_TO_100, actual);
+    }
 }
