@@ -11,22 +11,26 @@ public class Fizzbuzz6 {
         new Fizzbuzz6().calculateFizzbuzz().forEach(System.out::println);
     }
 
-    private static List<FizzBuzzFactor> factors = Arrays.asList(
-            new FizzBuzzFactor("Fizz", 3),
-            new FizzBuzzFactor("Buzz", 5)
-    );
     private final FizzbuzzRange range;
+    private List<FizzBuzzFactor> factors;
 
     public Fizzbuzz6() {
-        this.range = new FizzbuzzRange(1, 101);
+        this(new FizzbuzzRange(1, 101), Arrays.asList(
+                new FizzBuzzFactor("Fizz", 3),
+                new FizzBuzzFactor("Buzz", 5)
+        ));
+    }
+    public Fizzbuzz6(FizzbuzzRange range, List<FizzBuzzFactor> factors) {
+        this.range = range;
+        this.factors = factors;
     }
 
     Stream<FizzbuzzProvider> calculateFizzbuzz() {
-        return this.range.stream().map( (n) -> new FizzbuzzCalculator().convert(n));
+        return this.range.stream().map( (n) -> new FizzbuzzCalculator().convert(n, this.factors));
     }
 
     static class FizzbuzzCalculator {
-        public FizzbuzzProvider convert(int n) {
+        public FizzbuzzProvider convert(int n, List<FizzBuzzFactor> factors) {
             StringBuilder result = new StringBuilder();
             for (Fizzbuzz6.FizzBuzzFactor factor : factors) {
                 if (factor.predicate.test(n)) {
