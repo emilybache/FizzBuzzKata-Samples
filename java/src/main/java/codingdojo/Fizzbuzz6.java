@@ -8,62 +8,77 @@ import java.util.stream.Stream;
 
 public class Fizzbuzz6 {
     public static void fizzbuzz() {
-        new Fizzbuzz6().calculateFizzbuzz().forEach(System.out::println);
+        Fizzbuzz6 fizzbuzz6 = new Fizzbuzz6();
+        fizzbuzz6.calculateFizzbuzz()
+                .forEach(System.out::println);
     }
 
-    private final FizzbuzzRange range;
-    private List<FizzBuzzFactor> factors;
+    private final Range range;
+    private List<Factor> factors;
 
     public Fizzbuzz6() {
-        this(new FizzbuzzRange(1, 101), Arrays.asList(
-                new FizzBuzzFactor("Fizz", 3),
-                new FizzBuzzFactor("Buzz", 5)
+        this(new Range(1, 101), Arrays.asList(
+                new Factor("Fizz", 3),
+                new Factor("Buzz", 5)
         ));
     }
-    public Fizzbuzz6(FizzbuzzRange range, List<FizzBuzzFactor> factors) {
+
+    public Fizzbuzz6(Range range, List<Factor> factors) {
         this.range = range;
         this.factors = factors;
     }
 
-    Stream<FizzbuzzProvider> calculateFizzbuzz() {
-        return this.range.stream().map( (n) -> new FizzbuzzCalculator().convert(n, this.factors));
+    Stream<Provider> calculateFizzbuzz() {
+        FizzbuzzCalculator calculator =
+                new FizzbuzzCalculator(this.factors);
+        return this.range.stream().map(calculator::convert);
     }
 
     static class FizzbuzzCalculator {
-        public FizzbuzzProvider convert(int n, List<FizzBuzzFactor> factors) {
+        private final List<Factor> factors;
+
+        FizzbuzzCalculator(List<Factor> factors) {
+            this.factors = factors;
+        }
+
+        public Provider convert(int n) {
             StringBuilder result = new StringBuilder();
-            for (Fizzbuzz6.FizzBuzzFactor factor : factors) {
+            for (Factor factor : factors) {
                 if (factor.predicate.test(n)) {
                     result.append(factor.name);
                 }
             }
-            return new FizzbuzzProvider(result.toString(), n);
+            return new Provider(result.toString(), n);
         }
     }
 
-    static class FizzbuzzProvider {
+    static class Provider {
         private int n;
         private String provided;
 
-        public  FizzbuzzProvider(String provided, int n) {
+        public Provider(String provided, int n) {
             this.provided = provided;
             this.n = n;
         }
+
         public String provide() {
-            return "".equals(provided) ? "" + this.n : provided;
+            if ("".equals(provided))
+                return "" + this.n;
+            return provided;
         }
+
         @Override
         public String toString() {
             return provide();
         }
     }
 
-    static class FizzbuzzRange {
+    static class Range {
 
         private final int from;
         private final int to;
 
-        public FizzbuzzRange(int from, int to) {
+        public Range(int from, int to) {
             this.from = from;
             this.to = to;
         }
@@ -73,10 +88,11 @@ public class Fizzbuzz6 {
         }
     }
 
-    static class FizzBuzzFactor {
+    static class Factor {
         public String name;
         public Predicate<Integer> predicate;
-        public FizzBuzzFactor(String name, int factor) {
+
+        public Factor(String name, int factor) {
             this.name = name;
             this.predicate = n -> n % factor == 0;
         }

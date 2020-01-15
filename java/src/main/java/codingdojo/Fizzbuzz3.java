@@ -11,7 +11,8 @@ public class Fizzbuzz3 {
     }
 
     static Stream<String> calculateFizzbuzz() {
-        return IntStream.range(1, 101).mapToObj(Fizzbuzz3::nToFizzbuzz);
+        return IntStream.range(1, 101).mapToObj(
+                Fizzbuzz3::nToFizzbuzz);
     }
 
     static String nToFizzbuzz(int n) {

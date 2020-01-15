@@ -6,7 +6,8 @@ import java.util.stream.IntStream;
 
 public class Fizzbuzz4 {
     public static void fizzbuzz() {
-        new Fizzbuzz4(1, 101).getFizzbuzz().forEach(System.out::println);
+        Fizzbuzz4 fizzbuzz4 = new Fizzbuzz4(1, 101);
+        fizzbuzz4.getFizzbuzz().forEach(System.out::println);
     }
 
     private final int from;
@@ -30,7 +31,9 @@ public class Fizzbuzz4 {
     }
 
     private void calculateFizzbuzz() {
-        fizzbuzz = IntStream.range(this.from, this.to).mapToObj(this::nToFizzbuzz).collect(Collectors.toList());
+        IntStream range = IntStream.range(this.from, this.to);
+        fizzbuzz = range.mapToObj(this::nToFizzbuzz)
+                .collect(Collectors.toList());
     }
 
     private String nToFizzbuzz(int n) {
