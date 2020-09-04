@@ -4,7 +4,10 @@ set(CMAKE_CXX_STANDARD 17)
 set(SOURCE_FILES FizzBuzz1.h
         FizzBuzz1.cpp
         FizzBuzz2.h
-        FizzBuzz2.cpp)
+        FizzBuzz2.cpp
+        FizzBuzz3.h
+        FizzBuzz3.cpp
+        )
 
 add_library(${PROJECT_NAME} ${SOURCE_FILES})
 target_include_directories(${PROJECT_NAME}
