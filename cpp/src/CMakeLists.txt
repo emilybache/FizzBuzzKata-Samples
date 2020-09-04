@@ -1,8 +1,10 @@
 cmake_minimum_required(VERSION 3.8)
 project(FizzBuzz.src CXX)
 set(CMAKE_CXX_STANDARD 17)
-set(SOURCE_FILES FizzBuzz.h
-        fizzbuzz.cpp)
+set(SOURCE_FILES FizzBuzz1.h
+        FizzBuzz1.cpp
+        FizzBuzz2.h
+        FizzBuzz2.cpp)
 
 add_library(${PROJECT_NAME} ${SOURCE_FILES})
 target_include_directories(${PROJECT_NAME}

@@ -1,6 +1,6 @@
 
 #include <iostream>
-#include "FizzBuzz.h"
+#include "FizzBuzz1.h"
 
 void fizzbuzz1() {
     for (int i = 1; i < 101; i++) {
