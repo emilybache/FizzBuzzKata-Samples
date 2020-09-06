@@ -3,6 +3,7 @@
 #include "catch2/catch.hpp"
 #include "ApprovalTests.hpp"
 #include <string>
+#include <fizzbuzz3.h>
 
 extern "C"
 {
@@ -25,8 +26,14 @@ TEST_CASE ("fizzbuzz1") {
 
 TEST_CASE ("fizzbuzz2") {
     fizzbuzz2();
-    REQUIRE(std::string(buffer) == std::string(expected_output));
+    //REQUIRE(std::string(buffer) == std::string(expected_output));
     REQUIRE(strcmp(buffer, expected_output) == 0);
+    next=buffer; // reset for later.
+}
+
+TEST_CASE ("fizzbuzz3") {
+    fizzbuzz3();
+    REQUIRE(std::string(buffer) == std::string(expected_output));
     next=buffer; // reset for later.
 }
 
