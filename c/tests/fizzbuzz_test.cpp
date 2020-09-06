@@ -7,6 +7,7 @@
 extern "C"
 {
 #include "fizzbuzz1.h"
+#include "fizzbuzz2.h"
 }
 
 static char buffer[1024];
@@ -18,6 +19,13 @@ static char *expected_output = "1\n2\nFizz\n4\nBuzz\nFizz\n7\n8\nFizz\nBuzz\n11\
 
 TEST_CASE ("fizzbuzz1") {
     fizzbuzz1();
+    REQUIRE(strcmp(buffer, expected_output) == 0);
+    next=buffer; // reset for later.
+}
+
+TEST_CASE ("fizzbuzz2") {
+    fizzbuzz2();
+    REQUIRE(std::string(buffer) == std::string(expected_output));
     REQUIRE(strcmp(buffer, expected_output) == 0);
     next=buffer; // reset for later.
 }

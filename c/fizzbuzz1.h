@@ -1,5 +1,7 @@
-#include <stdio.h>
+#ifndef FIZZBUZZ_FIZZBUZZ1_H
+#define FIZZBUZZ_FIZZBUZZ1_H
 
+#include <stdio.h>
 void fizzbuzz1()
 {
 	int i;
@@ -14,3 +16,5 @@ void fizzbuzz1()
         printf("\n");
     }
 }
+
+#endif //FIZZBUZZ_FIZZBUZZ1_H
