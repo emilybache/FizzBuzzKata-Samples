@@ -13,6 +13,7 @@ void fizzbuzz3()
     for(i=1; i<=100; ++i)
     {
         char* result = (char *) malloc(9);
+        memset(result, 0, 9);
         fizzbuzz3_converter(i, result);
         printf("%s\n", result);
     }
@@ -25,16 +26,20 @@ typedef struct Factor {
 
 void fizzbuzz3_converter(int i, char* result)
 {
-    Factor fizz = {.number  = 3, .conversion = "Fizz"};
-    Factor buzz = {.number = 5, .conversion = "Buzz"};
-    Factor factors[] = {fizz, buzz};
+    char fizz[5] = "Fizz";
+    char buzz[5] = "Buzz";
+
+    Factor fizzFactor = {.number  = 3, .conversion = fizz};
+    Factor buzzFactor = {.number = 5, .conversion = buzz};
+    Factor factors[] = {fizzFactor, buzzFactor};
 
     for (int j = 0; j < sizeof(factors)/sizeof(factors[0]); ++j)
     {
-        bool hasFactor = i%factors[j].number == 0;
+        bool hasFactor = i % factors[j].number == 0;
         if (hasFactor)
         {
             strncat(result, factors[j].conversion, sizeof(factors[j].conversion));
+            result[9-1] = '\0';
         }
     }
     if (strcmp(result, "") == 0)

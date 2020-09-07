@@ -8,12 +8,15 @@
 
 void fizzbuzz4_converter(int i, char* result);
 
+static const int FIZZBUZZ_MAX_LENGTH = 9;
+
 void fizzbuzz4()
 {
     int i;
     for(i=1; i<=100; ++i)
     {
-        char* result = (char *) malloc(9);
+        char* result = (char *) malloc(FIZZBUZZ_MAX_LENGTH);
+        memset(result, 0, FIZZBUZZ_MAX_LENGTH);
         fizzbuzz4_converter(i, result);
         printf("%s\n", result);
     }
