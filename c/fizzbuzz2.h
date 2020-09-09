@@ -14,6 +14,7 @@ void fizzbuzz2()
         char* result = (char *) malloc(9);
         fizzbuzz_for_n(i, result);
         printf("%s\n", result);
+        free(result);
     }
 }
 

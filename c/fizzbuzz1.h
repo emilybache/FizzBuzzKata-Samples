@@ -2,6 +2,7 @@
 #define FIZZBUZZ_FIZZBUZZ1_H
 
 #include <stdio.h>
+
 void fizzbuzz1()
 {
 	int i;
