@@ -22,17 +22,17 @@ type FBRange struct {
 	max int
 }
 
-type FizzBuzzCalculator struct {
+type Calculator struct {
 	factors []FBFactor
 	fbRange FBRange
 }
 
-func defaultFizzBuzzCalculator() FizzBuzzCalculator {
+func defaultFizzBuzzCalculator() Calculator {
 	fizzFactor := FBFactor{3, "Fizz"}
 	buzzFactor := FBFactor{5, "Buzz"}
 	factors := []FBFactor{fizzFactor, buzzFactor}
 	fbRange := FBRange{1,100}
-	return FizzBuzzCalculator{factors, fbRange}
+	return Calculator{factors, fbRange}
 }
 
 type Provider struct {
@@ -51,7 +51,7 @@ func (provider Provider)String() string {
 	return provider.provide()
 }
 
-func (calculator FizzBuzzCalculator)calculate(n int) Provider {
+func (calculator Calculator)calculate(n int) Provider {
 	output := ""
 	for _, factor := range calculator.factors {
 		hasFactor := n % factor.number == 0
@@ -62,7 +62,7 @@ func (calculator FizzBuzzCalculator)calculate(n int) Provider {
 	return Provider{output, n}
 }
 
-func (calculator FizzBuzzCalculator)print() []Provider {
+func (calculator Calculator)print() []Provider {
 	size := calculator.fbRange.max - calculator.fbRange.min + 1
 	output := make([]Provider, 0, size)
 	for i := calculator.fbRange.min; i <= calculator.fbRange.max; i++ {
