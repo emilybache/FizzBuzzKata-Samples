@@ -19,6 +19,38 @@ func TestSample1(t *testing.T) {
 	assert.Equal(t, expectedOutput(), output)
 }
 
+func TestSample2(t *testing.T) {
+
+	output := captureOutput(t, func() {
+		fizzbuzz2()
+	})
+	assert.Equal(t, expectedOutput(), output)
+}
+
+func TestSample3(t *testing.T) {
+
+	output := captureOutput(t, func() {
+		fizzbuzz3()
+	})
+	assert.Equal(t, expectedOutput(), output)
+}
+
+func TestSample4(t *testing.T) {
+
+	output := captureOutput(t, func() {
+		fizzbuzz4()
+	})
+	assert.Equal(t, expectedOutput(), output)
+}
+
+func TestSample5(t *testing.T) {
+
+	output := captureOutput(t, func() {
+		fizzbuzz5()
+	})
+	assert.Equal(t, expectedOutput(), output)
+}
+
 // code copied from https://groups.google.com/g/golang-nuts/c/hVUtoeyNL7Y
 func dieOn(err error, t *testing.T) {
 	if err != nil {
