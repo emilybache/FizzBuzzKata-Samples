@@ -10,9 +10,11 @@ class Fizzbuzz5 {
         fun fizzbuzz() {
             calculateFizzbuzz().forEach(System.out::println);
         }
-        fun  calculateFizzbuzz() : List<String> {
-            return (1..100).map{n -> fizzbuzzFactor(n)}
+
+        fun calculateFizzbuzz(): List<String> {
+            return (1..100).map { n -> fizzbuzzFactor(n) }
         }
+
         fun fizzbuzzFactor(n: Int): String {
             val result = StringBuilder();
             for (factor in factors) {
@@ -31,7 +33,7 @@ class Fizzbuzz5 {
     }
 
     class Factor(val name: String, val factor: Int) {
-        val predicate =  {n: Int -> n % factor == 0}
+        val predicate = { n: Int -> n % factor == 0 }
     }
 
 }

@@ -8,7 +8,7 @@ class Fizzbuzz4(val from: Int, val to: Int) {
         }
     }
 
-    constructor(): this (1, 100) {}
+    constructor() : this(1, 100) {}
 
     var fizzbuzz: List<String>? = null
 
@@ -20,7 +20,7 @@ class Fizzbuzz4(val from: Int, val to: Int) {
     }
 
     private fun calculateFizzbuzzNumbers() {
-        fizzbuzz = (from..to).map{n -> nToFizzbuzz(n)}
+        fizzbuzz = (from..to).map { n -> nToFizzbuzz(n) }
     }
 
     private fun nToFizzbuzz(n: Int): String {

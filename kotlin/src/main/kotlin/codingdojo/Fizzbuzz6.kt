@@ -13,7 +13,7 @@ class Fizzbuzz6 {
 
     fun calculateFizzbuzz(): List<Provider> {
         val calculator = FizzbuzzCalculator(factors);
-        return this.range.stream().map{i -> calculator.convert(i)};
+        return this.range.stream().map { i -> calculator.convert(i) };
     }
 
     class FizzbuzzCalculator(val factors: List<Factor>) {
@@ -49,6 +49,6 @@ class Fizzbuzz6 {
     }
 
     class Factor(val name: String, val factor: Int) {
-        val predicate =  {n: Int -> n % factor == 0}
+        val predicate = { n: Int -> n % factor == 0 }
     }
 }
