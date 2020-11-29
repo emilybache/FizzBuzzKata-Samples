@@ -9,7 +9,10 @@ class Fizzbuzz6 {
     }
 
     val range = Range(1, 100);
-    val factors = listOf(Factor("Fizz", 3), Factor("Buzz", 5));
+    val factors = listOf(
+            Factor("Fizz", 3),
+            Factor("Buzz", 5)
+    );
 
     fun calculateFizzbuzz(): List<Provider> {
         val calculator = FizzbuzzCalculator(factors);

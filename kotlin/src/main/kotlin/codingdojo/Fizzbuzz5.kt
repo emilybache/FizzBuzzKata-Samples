@@ -29,7 +29,10 @@ class Fizzbuzz5 {
                 return fizzbuzz
         }
 
-        val factors: List<Factor> = listOf(Factor("Fizz", 3), Factor("Buzz", 5));
+        val factors: List<Factor> = listOf(
+                Factor("Fizz", 3),
+                Factor("Buzz", 5)
+        );
     }
 
     class Factor(val name: String, val factor: Int) {
