@@ -1,5 +1,6 @@
 #include <iostream>
 #include <numeric>
+#include <algorithm>
 #include "FizzBuzz5.h"
 
 void FizzBuzz5::fizzbuzz() {
