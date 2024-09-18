@@ -1,9 +1,10 @@
 target
 **/*.iml
-.idea
+**/.idea
 **/__pycache__
 **/*.pyc
 .cache
 out/
 build/
 .gradle/
+**/.DS_Store
